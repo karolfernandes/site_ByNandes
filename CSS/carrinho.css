@@ -1,0 +1,242 @@
+.header {
+    background-color: #5C3C2B;
+    /* cor de fundo*/
+    padding: 10px 20px;
+    /*tamanho da área*/
+    align-items: center;
+    /* alinhar no centro*/
+    display: flex;
+    /*redimensionar*/
+    justify-content: space-between;
+    /*colocar os espaços ao lado*/
+}.icons {
+    display: flex;
+    /* os icones ficam flexiveis a mudança de tela*/
+    gap: 20px;
+    /*espaço entre os icones*/
+    align-items: center;
+    /*centralizar os itens no meio do menu*/
+    margin-right: 20px;
+    /*dá um espaço do icone com a borda lateral do menu*/
+}
+ 
+.icons img {
+    /**configurando as imagens dos icones*/
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+ 
+}
+ 
+
+
+
+/* Rodapé */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4b2e2e;
+  color: #fff;
+  padding: 15px 30px;
+  flex-wrap: wrap;
+}
+
+.footer-esquerdo p {
+  margin: 0;
+}
+
+.footer-direito {
+  text-align: right;
+}
+
+.icons-sociais img {
+  width: 24px;
+  margin-left: 10px;
+}
+
+
+.logo-carrinho img {
+  width: 100px;
+}
+
+
+.carrinho {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.carrinho-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Permite quebrar linhas em telas menores */
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.carrinho-item > div:first-child {
+  display: flex;
+  align-items: center;
+  flex: 2; /* Ocupa mais espaço do card */
+  min-width: 200px;
+}
+
+.produto-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0; /* Não encolher */
+}
+
+.ms-3 {
+  margin-left: 15px;
+  flex: 1; /* Texto ocupa espaço restante */
+}
+
+.carrinho-item > div.text-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1; /* Espaço do preço e quantidade */
+  min-width: 120px;
+}
+
+.preco {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.d-flex.justify-content-center {
+  gap: 5px;
+}
+
+.btn-qtd {
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  background: #f5f5f5;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.qtd-input {
+  width: 40px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.valor-produto {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding: 15px;
+  border-top: 1px solid #ddd;
+}
+
+.btn-finalizar {
+  background: #28a745;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.btn-finalizar:hover {
+  background: #218838;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .carrinho-item {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .carrinho-item > div:first-child,
+  .carrinho-item > div.text-center {
+    flex: unset;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+.valor-produto {
+  display: flex;
+  justify-content: space-between; /* Espaço entre total e botão */
+  align-items: center;
+  margin-top: 20px;
+  padding: 15px;
+  border-top: 1px solid #ddd;
+}
+
+.valor-produto p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+
+/*rodapé*/
+.footer {
+    background-color: #BF9F7D;
+
+    /*cor de fundo*/
+    padding: 15px 40px 15px 40px;
+    /*dimensão*/
+    color: white;
+    /*cor do texto*/
+    font-family: "Kalibeh", sans-serif;
+    /*fonte dos textos*/
+
+}
+
+.footer-esquerdo {
+    font-weight: bold;
+    /*colocando o texto em negrito*/
+    margin: 0;
+}
+
+.footer-direito {
+    text-align: right;
+    /*Texto alinhado à direita*/
+    margin: 0 0 8px 0;
+}
+
+.icons-sociais {
+    /*configurando a área onde fica os icones das redes sociais*/
+    display: flex;
+    gap: 20px;
+    /*distancia entre eles*/
+    justify-content: flex-end;
+}
+
+.icons-sociais img {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.3s; /* animação suave ao passar o mouse em cima*/
+
+}
+
+/*Configurações de tela*/
+
+html, body{
+background-color: #f3e6d9;
+ height: 100%; /*ocupar 100% da altura da tela*/
+ margin: 0; /*remove as margens padrão*/
+ display: flex;
+ flex-direction: column; /*organiza em colunas*/
+
+}

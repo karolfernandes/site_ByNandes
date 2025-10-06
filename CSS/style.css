@@ -1,0 +1,430 @@
+/* estilo do cabeçalho */
+
+.header {
+    background-color: #5C3C2B;
+    /* cor de fundo*/
+    padding: 10px 20px;
+    /*tamanho da área*/
+    align-items: center;
+    /* alinhar no centro*/
+    display: flex;
+    /*redimensionar*/
+    justify-content: space-between;
+    /*colocar os espaços ao lado*/
+}
+
+
+/* Centralizar card na tela */
+body {
+  display: flex;
+  justify-content: center; /* centraliza na horizontal */
+  align-items: center;     /* centraliza na vertical */
+  min-height: 100vh;       /* ocupa toda a altura da tela */
+  margin: 0;               /* remove espaçamentos */
+}
+
+  .logo {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    /* tamanho da fonte do texto*/
+    font-weight: bold;
+    /*texto em negrito*/
+  }
+
+/* Configurando a logo do site */
+    .logo img {
+    /*dimensões da imagem*/
+    width: 80px;
+    /*tamanho*/
+    margin-right: 10px;
+    /*margens*/
+}
+ 
+
+.logo img {
+    /*dimensões da imagem*/
+    width: 80px;
+    /*tamanho*/
+    margin-right: 10px;
+    /*margens*/
+}
+
+/*CONFIGURAÇÃO DA BARRA DE PESQUISA DO MENU SUPERIOR*/
+
+.search-box {
+    flex: 1;
+    max-width: 600px;
+    /*largura máxima*/
+    margin: 0 20px;
+    /* margens da caixa*/
+    position: relative;
+    /*posição*/
+}
+
+.search-box input {
+    /*configuração da parte de dentro*/
+    width: 100%;
+    /*preencher toda área*/
+    padding: 10px 40px 10px 15px;
+    /*definindo o espaço cima,direita,baixo,esquerda*/
+    border: none;
+    /*borda da caixa*/
+    border-radius: 20px;
+    /*expessura da borda*/
+    font-size: 16px;
+    /*tamanho da fonte do texto*/
+}
+
+/*CONFIGURANDO OS ICONES DO MENU SUPERIOR*/
+
+.icons {
+    display: flex;
+    /* os icones ficam flexiveis a mudança de tela*/
+    gap: 20px;
+    /*espaço entre os icones*/
+    align-items: center;
+    /*centralizar os itens no meio do menu*/
+    margin-right: 20px;
+    /*dá um espaço do icone com a borda lateral do menu*/
+}
+
+.icons img {
+    /**configurando as imagens dos icones*/
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+
+}
+
+/* CONFIGURAÇÕES PARA O RODAPÉ*/
+
+.footer {
+    background-color: #BF9F7D;
+
+    /*cor de fundo*/
+    padding: 15px 40px 15px 40px;
+    /*dimensão*/
+    color: white;
+    /*cor do texto*/
+    font-family: "Kalibeh", sans-serif;
+    /*fonte dos textos*/
+
+}
+
+.footer-esquerdo {
+    font-weight: bold;
+    /*colocando o texto em negrito*/
+    margin: 0;
+}
+
+.footer-direito {
+    text-align: right;
+    /*Texto alinhado à direita*/
+    margin: 0 0 8px 0;
+}
+
+.icons-sociais {
+    /*configurando a área onde fica os icones das redes sociais*/
+    display: flex;
+    gap: 20px;
+    /*distancia entre eles*/
+    justify-content: flex-end;
+}
+
+.icons-sociais img {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.3s; /* animação suave ao passar o mouse em cima*/
+
+}
+
+/*Configurações de tela*/
+
+html, body{
+ height: 100%; /*ocupar 100% da altura da tela*/
+ margin: 0; /*remove as margens padrão*/
+ display: flex;
+ flex-direction: column; /*organiza em colunas*/
+
+}
+
+main{
+   flex: 1;/*mandar o rodapé para baixo*/ 
+}
+/* Fundo bege */
+.bg-cadastro {
+  background-color: #BF9F7D;
+}
+
+/* Card central */
+.formcard {
+  max-width: 500px;
+  width: 100%;
+  border-radius: 12px;
+  background-color: #ffffff54;
+}
+
+/* Título */
+.formcard h2 {
+  font-weight: bold;
+  color: #ffffff54;
+}
+.label-input {
+  color: #ffffff; /* branco */
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+
+/* Botão cadastro */
+.btn-cadastro {
+  background-color: hwb(0 100% 0%);
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 10px;
+  transition: 0.3s;
+}
+
+.btn-cadastro:hover {
+  background-color: #412525;
+}
+
+/* Labels */
+.form-label {
+  font-weight: 600;
+  color: #f5f5f554;
+}
+
+/* Inputs */
+.form-control {
+  border-radius: 6px;
+  border: 1px solid #2b0a0a54;
+}
+
+.imagemFundo {
+  background-image: url("../IMG/imagemFundo.png");
+  background-size: cover;     /* Faz a imagem ocupar todo o espaço */
+  background-position: center; /* Centraliza */
+  background-repeat: no-repeat; 
+  width: 100%;  
+  height: 100vh;  /* Ajusta para a altura da tela */
+}
+
+.login-card{
+  background-color: #2b0a0a60;
+  position: relative; /* importante para a logo absoluta */
+  width: 350px;
+  height: 450px;
+
+
+  
+  
+}
+
+/*configurando os campos do login*/
+.campos-login{
+  margin-top: 60px; /* espaço para a logo */
+  color: white;
+}
+
+.campos-login a{
+  color: #ffffff;
+}
+
+.campos-login .btn-entrar{
+  background-color: #c2a792;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+
+/* Moldura da logo */
+.logo-container {
+  position: absolute;       /* fica sobreposta ao card */
+  top: -50px;               /* ajusta a altura */
+  
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #A37C53;   /* fundo da moldura */
+  border-radius: 50%;       /* deixa redondo */
+  padding: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* sombra leve */
+  display: flex;
+  justify-content: center;
+  align-items: center;       /* centraliza a imagem dentro da moldura */
+  overflow: hidden; 
+   width: 130px;   /* largura da moldura */
+  height: 130px;  /* altura da moldura */         /* remove qualquer espaço extra da imagem */
+}
+
+/* Imagem dentro da moldura */
+/* Imagem da logo */
+.logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* cobre toda a moldura sem distorcer */
+  border-radius: 50%;         /* deixa a própria imagem redonda */
+}
+
+
+/*ao passar o mouse no botão entrar*/
+.btn-entrar:hover {
+  background-color: #9c5508; 
+  color: #fff;
+  
+}
+
+
+/* CARROSSEL DE BANNERS*/
+
+/*configuração do carrossel principal*/
+/*CONFIGURAÇÕES DA TELA DE PAGAMENTO*/
+.header{
+  background-color: #412525;
+  padding: 10px 20px;
+  align-items: center;
+   display: flex;
+    /*redimensionar*/
+    justify-content: space-between;
+    /*colocar os espaços ao lado*/
+}
+.logo img {
+    /*dimensões da imagem*/
+    width: 80px;
+    /*tamanho*/
+    margin-right: 10px;
+    /*margens*/
+}
+.icons {
+    display: flex;
+    /* os icones ficam flexiveis a mudança de tela*/
+    gap: 20px;
+    /*espaço entre os icones*/
+    align-items: center;
+    /*centralizar os itens no meio do menu*/
+    margin-right: 20px;
+    /*dá um espaço do icone com a borda lateral do menu*/
+}
+ 
+.icons img {
+    /**configurando as imagens dos icones*/
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+/* Menu superior */
+/*CONFIGURANDO OS ICONES DO MENU SUPERIOR*/
+ 
+
+/*Configurando a tela de cadastro de clientes*/
+body {
+  margin: 0;
+  font-family: "Georgia", serif;
+  background-color: #D9C5B2; /* Bege de fundo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: #D9C5B2; /* fundo igual ao da tela */
+  padding: 40px;
+  width: 600px;
+  text-align: left;
+}
+
+.label-input.text-uppercase {
+  font-weight: bold;
+  font-size: 18px;
+  color: #3a2b22; /* marrom escuro */
+  width: 200px;/*largura fixa para alinhar os campos*/
+  display:flex;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #B3957A; /* marrom claro dos inputs */
+  font-size: 16px;
+  color: #fff;
+}
+.form-group {
+ display: flex;
+ align-items: center;
+ margin-bottom: 15px;
+}
+
+.form-input::placeholder {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #B3957A;
+  font-size: 16px;
+  color: #704a358e;
+}
+
+.btn-cadastro {
+  background-color: #4b2e2e; /* marrom escuro */
+  color: #fff;
+  font-weight: bold;
+  padding: 12px 30px; /* aumenta o tamanho */
+  border-radius: 10px; /* bordas arredondadas */
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.btn:hover  {
+  background-color: #3a2323; /* tom mais escuro no hover */
+  transform: scale(1.05);   /* leve aumento no hover */
+}
+.btn-cadastro:hover {
+  background-color: #3a241a;
+    margin-bottom: 15px
+}
+
+
+
+
+
+/*estilizando tela de perfil de usuário*/
+
+
+
+.logo-perfil {
+  position: absolute;       /* fica sobreposta ao card */
+  top: -50px;               /* ajusta a altura */
+  
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #A37C53;   /* fundo da moldura */
+  border-radius: 50%;       /* deixa redondo */
+  padding: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* sombra leve */
+  display: flex;
+  justify-content: center;
+  align-items: center;       /* centraliza a imagem dentro da moldura */
+  overflow: hidden; 
+   width: 130px;   /* largura da moldura */
+  height: 130px;  /* altura da moldura */         /* remove qualquer espaço extra da imagem */
+}
+
+/* Imagem dentro da moldura */
+/* Imagem da logo */
+.logoPerfil {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* cobre toda a moldura sem distorcer */
+  border-radius: 50%;         /* deixa a própria imagem redonda */
+}
+
+

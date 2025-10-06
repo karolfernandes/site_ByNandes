@@ -1,0 +1,82 @@
+.header {
+    background-color: #5C3C2B;
+    /* cor de fundo*/
+    padding: 10px 20px;
+    /*tamanho da área*/
+    align-items: center;
+    /* alinhar no centro*/
+    display: flex;
+    /*redimensionar*/
+    justify-content: space-between;
+    /*colocar os espaços ao lado*/
+
+   
+
+}.icons {
+    display: flex;
+    /* os icones ficam flexiveis a mudança de tela*/
+    gap: 20px;
+    /*espaço entre os icones*/
+    align-items: center;
+    /*centralizar os itens no meio do menu*/
+    margin-right: 20px;
+    /*dá um espaço do icone com a borda lateral do menu*/
+}
+ 
+.icons img {
+    /**configurando as imagens dos icones*/
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+ 
+}
+.logo img {
+    width: 100px;               /* tamanho da logo */
+    margin: 0;                 /* remove margens extras */
+    display: block;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+
+
+/* Rodapé */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4b2e2e;
+  color: #fff;
+  padding: 15px 30px;
+  flex-wrap: wrap;
+
+}
+
+.footer-esquerdo p {
+  margin: 0;
+}
+
+.footer-direito {
+  text-align: right;
+}
+
+.icons-sociais img {
+  width: 24px;
+  margin-left: 10px;
+}
+
+/*cor de fundo*/
+.body {
+  background-color: #f3e6d9;
+}
+
+/*card da tela*/
+.corpo{
+  margin-top: 100px;
+  margin-bottom: 200px;
+}
+
+.botao {}

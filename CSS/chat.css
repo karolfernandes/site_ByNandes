@@ -1,0 +1,92 @@
+/*configurando a tela de chat*/
+/* Barra superior */
+.menu-chat {
+    background-color: #5C3C2B; /* cor de fundo */
+    padding: 10px 20px;        /* tamanho da área */
+    display: flex;             /* ativa flexbox */
+    justify-content: center;   /* centraliza a logo no meio */
+    align-items: center;       /* centraliza na vertical */
+    height: 70px;              /* altura da barra */
+}
+
+/* Corpo da página */
+body {
+  margin: 0;                   /* remove espaçamentos */
+  font-family: Arial, sans-serif;
+  background-color:#f3e6d9 ;
+}
+
+/* Container da logo */
+.logo-chat {
+    display: flex;
+    align-items: center;
+    justify-content: center;   /* garante que fique centralizada */
+    color: white;
+    font-size: 18px;           /* tamanho da fonte do texto */
+    font-weight: bold;         /* texto em negrito */
+}
+
+/* Configurando a imagem da logo */
+.logo-chat img {
+    width: 70px;               /* tamanho da logo */
+    margin: 0;                 /* remove margens extras */
+    display: block;
+}
+.input-mensagem {
+  top: auto;
+ height: 30px;
+  bottom: 50px; /* distância do footer */
+  left: 50%;
+  transform: translateX(-30%);
+  width: 250px;
+  padding: 10px;
+  border: 2px solid #b0c4de;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-top: 600px;
+
+}
+.footer {
+    background-color: #BF9F7D;
+
+    /*cor de fundo*/
+    padding: 15px 40px 15px 40px;
+    /*dimensão*/
+    color: white;
+    /*cor do texto*/
+    font-family: "Kalibeh", sans-serif;
+    /*fonte dos textos*/
+
+}
+
+.footer-esquerdo {
+    font-weight: bold;
+    /*colocando o texto em negrito*/
+    margin: 0;
+}
+
+.footer-direito {
+    text-align: right;
+    /*Texto alinhado à direita*/
+    margin: 0 0 8px 0;
+}
+
+.icons-sociais {
+    /*configurando a área onde fica os icones das redes sociais*/
+    display: flex;
+    gap: 20px;
+    /*distancia entre eles*/
+    justify-content: flex-end;
+}
+
+.icons-sociais img {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.3s; /* animação suave ao passar o mouse em cima*/
+
+}
+ .input-chat {
+    margin-top: 150px;
+    margin-left: 450px;
+ }
+ 
