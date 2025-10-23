@@ -1,67 +1,57 @@
 <?php
+require_once __DIR__ . "/conexao.php";
 
-// Conectando este arquivo ao banco de dados
-require_once __DIR__ ."/conexao.php";
+header('Content-Type: application/json; charset=utf-8');
 
-// função para capturar os dados passados de uma página a outra
-function redirecWith($url,$params=[]){
-// verifica se os os paramentros não vieram vazios
- if(!empty($params)){
-// separar os parametros em espaços diferentes
-$qs= http_build_query($params);
-$sep = (strpos($url,'?') === false) ? '?': '&';
-$url .= $sep . $qs;
-}
-// joga a url para o cabeçalho no navegador
-header("Location:  $url");
-// fecha o script
-exit;
-}
+try {
+    // LISTAGEM JSON
+    if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["listar"])) {
+        $stmt = $pdo->query("SELECT idFrete AS id, Bairro AS bairro, Valor_frete AS valor, Transportadora AS transportadora FROM Frete ORDER BY Bairro, Valor_frete");
+        $fretes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-try{
-    // SE O METODO DE ENVIO FOR DIFERENTE DO POST
-    if($_SERVER["REQUEST_METHOD"] !== "POST"){
-        //VOLTAR À TELA DE CADASTRO E EXIBIR ERRO
-        redirecWith("../paginas_lojista/frete_pagamento_lojista.html",
-           ["erro"=> "Metodo inválido"]);
-    }
-    // variaveis
-    $NomePagamento = $_POST["nomepagamento"];
-    $FormaPagamento = (double)$_POST["formaPagamento"];
-   
+        $saida = array_map(function($item) {
+            return [
+                "id" => (int)$item["id"],
+                "bairro" => $item["bairro"],
+                "valor" => (float)$item["valor"],
+                "transportadora" => $item["transportadora"],
+            ];
+        }, $fretes);
 
-    // validação
-    $erros_validacao=[];
-    //se qualquer campo for vazio
-    if( $NomePagamento === "" || $FormaPagamento === "" ){
-        $erros_validacao[]="Preencha todos os campos";
+        echo json_encode(["ok" => true, "fretes" => $saida], JSON_UNESCAPED_UNICODE);
+        exit;
     }
 
-/* Inserir o frete no banco de dados */
-    $sql ="INSERT INTO 
-     FormaPagamento (NomePagamento,FormaPagamento)
-     Values (:nomepagamento,:formaPagamento)";
-     // executando o comando no banco de dados
-     $inserir = $pdo->prepare($sql)->execute([
-        ":nomepagamento" => $NomePagamento,
-         ":formaPagamento"=> $FormaPagamento,
-        
-     ]);
+    // CADASTRO DE FRETE
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $bairro = $_POST["bairro"] ?? '';
+        $valor = (float)($_POST["valor"] ?? 0);
+        $transportadora = $_POST["transportadora"] ?? '';
 
-     /* Verificando se foi cadastrado no banco de dados */
-     if($inserir){
-        redirecWith("../paginas_lojista/frete_pagamento_lojista.html",
-        ["cadastro" => "ok"]);
-     }else{
-        redirecWith("../paginas_lojista/frete_pagamento_lojista.html"
-        ,["erro" =>"Erro ao cadastrar no banco
-         de dados"]);
-     }
-}catch(\Exception $e){
-redirecWith("../paginas_lojista/frete_pagamento_lojista.html",
-      ["erro" => "Erro no banco de dados: "
-      .$e->getMessage()]);
+        if ($bairro === "" || $valor <= 0) {
+            echo json_encode(["ok" => false, "error" => "Preencha todos os campos obrigatórios"]);
+            exit;
+        }
+
+        $sql = "INSERT INTO Frete (Valor_frete, Bairro, Transportadora) VALUES (:valor, :bairro, :transportadora)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ":valor" => $valor,
+            ":bairro" => $bairro,
+            ":transportadora" => $transportadora
+        ]);
+
+        echo json_encode(["ok" => true, "message" => "Frete cadastrado com sucesso"]);
+        exit;
+    }
+
+    // Método inválido
+    echo json_encode(["ok" => false, "error" => "Método inválido"]);
+    exit;
+
+} catch (Throwable $e) {
+    http_response_code(500);
+    echo json_encode(["ok" => false, "error" => "Erro no banco de dados", "detail" => $e->getMessage()]);
+    exit;
 }
-
-
 ?>
