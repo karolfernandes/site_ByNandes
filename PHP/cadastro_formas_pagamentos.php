@@ -1,51 +1,34 @@
 <?php
 require_once __DIR__ . "/conexao.php";
-
 header('Content-Type: application/json; charset=utf-8');
 
 try {
-    // LISTAGEM JSON
+    // LISTAGEM
     if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["listar"])) {
-        $stmt = $pdo->query("SELECT idFrete AS id, Bairro AS bairro, Valor_frete AS valor, Transportadora AS transportadora FROM Frete ORDER BY Bairro, Valor_frete");
-        $fretes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = $pdo->query("SELECT idFormaPagamento AS id, NomePagamento AS nome FROM FormaPagamento ORDER BY idFormaPagamento");
+        $formas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $saida = array_map(function($item) {
-            return [
-                "id" => (int)$item["id"],
-                "bairro" => $item["bairro"],
-                "valor" => (float)$item["valor"],
-                "transportadora" => $item["transportadora"],
-            ];
-        }, $fretes);
-
-        echo json_encode(["ok" => true, "fretes" => $saida], JSON_UNESCAPED_UNICODE);
+        echo json_encode(["ok" => true, "formas_pagamento" => $formas], JSON_UNESCAPED_UNICODE);
         exit;
     }
 
-    // CADASTRO DE FRETE
+    // CADASTRO
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        $bairro = $_POST["bairro"] ?? '';
-        $valor = (float)($_POST["valor"] ?? 0);
-        $transportadora = $_POST["transportadora"] ?? '';
+        $nome = $_POST["nomepagamento"] ?? '';
 
-        if ($bairro === "" || $valor <= 0) {
+        if (trim($nome) === '') {
             echo json_encode(["ok" => false, "error" => "Preencha todos os campos obrigatórios"]);
             exit;
         }
 
-        $sql = "INSERT INTO Frete (Valor_frete, Bairro, Transportadora) VALUES (:valor, :bairro, :transportadora)";
+        $sql = "INSERT INTO FormaPagamento (NomePagamento) VALUES (:nome)";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([
-            ":valor" => $valor,
-            ":bairro" => $bairro,
-            ":transportadora" => $transportadora
-        ]);
+        $stmt->execute([":nome" => $nome]);
 
-        echo json_encode(["ok" => true, "message" => "Frete cadastrado com sucesso"]);
+        echo json_encode(["ok" => true, "message" => "Forma de pagamento cadastrada com sucesso!"]);
         exit;
     }
 
-    // Método inválido
     echo json_encode(["ok" => false, "error" => "Método inválido"]);
     exit;
 

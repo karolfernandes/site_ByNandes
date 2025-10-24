@@ -47,13 +47,18 @@
           <strong>Cadastrar/Atualizar banner</strong>
         </div>
         <div class="card-body">
-          <form class="row g-3" enctype="multipart/form-data">
+
+         <form action="../PHP/cadastro_banners.php" method="post" 
+         enctype="multipart/form-data" class="row g-3">
+
             <div class="col-12 col-md-4">
               <label class="form-label">Imagem do banner</label>
               <div class="banner-thumb border rounded d-flex align-items-center justify-content-center">
                 <span class="text-muted">Prévia</span>
               </div>
-              <input type="file" class="form-control mt-2" accept="image/*" disabled>
+             <input type="file" class="form-control mt-2" name="img" accept="image/*">
+
+
           
             </div>
 
@@ -61,7 +66,7 @@
               <div class="row g-3">
                 <div class="col-md-6">
                   <label class="form-label">Data de validade</label>
-                  <input type="date" class="form-control" placeholder="AAAA-MM-DD">
+                  <input type="date" class="form-control" name="validade" placeholder="AAAA-MM-DD">
                 </div>
                 <div class="col-md-6">
                   <label class="form-label">Categoria (opcional)</label>
@@ -74,18 +79,18 @@
                 </div>
                 <div class="col-md-8">
                   <label class="form-label">Descrição</label>
-                  <input type="text" class="form-control" maxlength="45" placeholder="Texto curto do banner">
+                  <input type="text" class="form-control" maxlength="45" name="descricao" placeholder="Texto curto do banner">
                 </div>
                 <div class="col-md-4">
                   <label class="form-label">Link</label>
-                  <input type="text" class="form-control" maxlength="45" placeholder="/promo-pets">
+                  <input type="text" class="form-control" maxlength="45" name="link" placeholder="/promo-pets">
                 </div>
               </div>
 
               <div class="d-flex gap-2 mt-3">
-                <button type="button" class="btn btn-primary" disabled>Cadastrar</button>
-                <button type="button" class="btn btn-outline-secondary" disabled>Editar</button>
-                <button type="button" class="btn btn-outline-danger" disabled>Excluir</button>
+                <button type="submit" class="btn btn-primary" >Cadastrar</button>
+                <button type="submit" class="btn btn-outline-secondary" >Editar</button>
+                <button type="submit" class="btn btn-outline-danger" >Excluir</button>
               </div>
             </div>
           </form>
@@ -105,33 +110,8 @@
                   <th class="text-end" style="width:170px;">Ações</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td><div class="mini-banner rounded"></div></td>
-                  <td>Semana de Inverno</td>
-                  <td>/semana-inv</td>
-                  <td>Acessórios</td>
-                  <td>31/10/2025</td>
-                  <td class="text-end">
-                    <div class="btn-group btn-group-sm">
-                      <a href="#" class="btn btn-outline-secondary disabled" aria-disabled="true">Editar</a>
-                      <a href="#" class="btn btn-outline-danger disabled" aria-disabled="true">Excluir</a>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><div class="mini-banner rounded"></div></td>
-                  <td>Frete Grátis Norte</td>
-                  <td>/frete-norte</td>
-                  <td>—</td>
-                  <td>15/11/2025</td>
-                  <td class="text-end">
-                    <div class="btn-group btn-group-sm">
-                      <a href="#" class="btn btn-outline-secondary disabled" aria-disabled="true">Editar</a>
-                      <a href="#" class="btn btn-outline-danger disabled" aria-disabled="true">Excluir</a>
-                    </div>
-                  </td>
-                </tr>
+              <tbody id="tabelaBanners">
+                
               </tbody>
               <tfoot>
                 <tr></tr>
@@ -154,7 +134,7 @@
           <strong>Cadastrar/Atualizar cupom</strong>
         </div>
         <div class="card-body">
-          <form class="row g-3">
+          <form action="../PHP/cadastro_cupons.php" class="row g-3" method="POST">
             <div class="col-md-4">
               <label class="form-label">Nome do cupom</label>
               <input type="text" class="form-control" maxlength="45" placeholder="PET10">
@@ -173,9 +153,9 @@
               <input type="number" class="form-control" min="1" placeholder="50">
             </div>
             <div class="col-12 d-flex gap-2">
-              <button type="button" class="btn btn-primary" disabled>Cadastrar</button>
-              <button type="button" class="btn btn-outline-secondary" disabled>Editar</button>
-              <button type="button" class="btn btn-outline-danger" disabled>Excluir</button>
+              <button type="submit" class="btn btn-primary" >Cadastrar</button>
+              <button type="submit" class="btn btn-outline-secondary" >Editar</button>
+              <button type="submit" class="btn btn-outline-danger" >Excluir</button>
             </div>
           </form>
         </div>
@@ -194,30 +174,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>By10</td>
-                  <td>10,00</td>
-                  <td>31/10/2025</td>
-                  <td>100</td>
-                  <td class="text-end">
-                    <div class="btn-group btn-group-sm">
-                      <a href="#" class="btn btn-outline-secondary disabled" aria-disabled="true">Editar</a>
-                      <a href="#" class="btn btn-outline-danger disabled" aria-disabled="true">Excluir</a>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>BYFRETE</td>
-                  <td>15,00</td>
-                  <td>30/11/2025</td>
-                  <td>50</td>
-                  <td class="text-end">
-                    <div class="btn-group btn-group-sm">
-                      <a href="#" class="btn btn-outline-secondary disabled" aria-disabled="true">Editar</a>
-                      <a href="#" class="btn btn-outline-danger disabled" aria-disabled="true">Excluir</a>
-                    </div>
-                  </td>
-                </tr>
+                
               </tbody>
               <tfoot>
                 <tr></tr>
@@ -279,28 +236,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Acessórios</td>
-                  <td>10%</td>
-                  <td>31/10/2025</td>
-                  <td class="text-end">
-                    <div class="btn-group btn-group-sm">
-                      <a href="#" class="btn btn-outline-secondary disabled" aria-disabled="true">Editar</a>
-                      <a href="#" class="btn btn-outline-danger disabled" aria-disabled="true">Remover</a>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Roupas</td>
-                  <td>5%</td>
-                  <td>15/11/2025</td>
-                  <td class="text-end">
-                    <div class="btn-group btn-group-sm">
-                      <a href="#" class="btn btn-outline-secondary disabled" aria-disabled="true">Editar</a>
-                      <a href="#" class="btn btn-outline-danger disabled" aria-disabled="true">Remover</a>
-                    </div>
-                  </td>
-                </tr>
+               
               </tbody>
               <tfoot>
                 <tr></tr>
@@ -362,7 +298,7 @@
                 </tr>
               </thead>
               <tbody>
-                "tabelaProdutos"
+                
               </tbody>
               <tfoot>
                 <tr></tr>

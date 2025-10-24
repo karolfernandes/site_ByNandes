@@ -12,7 +12,7 @@ const esc = s => (s || '').replace(/[&<>"']/g, c => ({
 // Função para listar formas de pagamento
 function listarFormaPagamento(tbPagamento) {
   const tbody = document.getElementById(tbPagamento);
-  const url = '../PHP/cadastro_formas_pagamentos.php?listar=1&format=json';
+  const url = '../php/cadastro_formas_pagamentos.php?listar=1&format=json';
 
   const row = f => `
     <tr>
