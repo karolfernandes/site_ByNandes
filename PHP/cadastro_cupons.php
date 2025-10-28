@@ -1,56 +1,41 @@
 <?php
-require_once __DIR__ . "/conexao.php"; // arquivo de conexão
+require_once __DIR__ . "/conexao.php";
+header('Content-Type: application/json; charset=utf-8');
 
-// Função para redirecionar com parâmetros
-function redirecWith($url, $params = []) {
-    if (!empty($params)) {
-        $qs = http_build_query($params);
-        $sep = (strpos($url, '?') === false) ? '?' : '&';
-        $url .= $sep . $qs;
-    }
-    header("Location: $url");
-    exit;
-}
+try {
+    // LISTAGEM
+    if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["listar"])) {
+        $stmt = $pdo->query("SELECT idCupomDesconto AS id, Nome_desconto AS nome
+         FROM CupomDesconto ORDER BY idCupomDesconto");
+        $formas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    // Receber os dados do formulário
-    $codigo = trim($_POST['codigo'] ?? '');
-    $desconto = trim($_POST['desconto'] ?? '');
-    $validade = trim($_POST['validade'] ?? '');
-    $categoria = $_POST['categoria_id'] ?? null;
-    $status = $_POST['status'] ?? 1; // padrão: ativo
-
-    // Validação de campos obrigatórios
-    if (empty($codigo) || empty($desconto) || empty($validade)) {
-        redirecWith("../paginas_lojista/cupons.html", ["erro" => "Preencha todos os campos obrigatórios"]);
+        echo json_encode(["ok" => true, "cupons" => $formas], JSON_UNESCAPED_UNICODE);
+        exit;
     }
 
-    // Inserir no banco de dados
-    try {
-        $sql = "INSERT INTO Cupons (Codigo, Desconto, Data_validade, Categorias_idCategorias, Status) 
-                VALUES (:codigo, :desconto, :validade, :categoria, :status)";
-        $stmt = $pdo->prepare($sql);
-        $sucesso = $stmt->execute([
-            ":codigo" => $codigo,
-            ":desconto" => $desconto,
-            ":validade" => $validade,
-            ":categoria" => $categoria,
-            ":status" => $status
-        ]);
+    // CADASTRO
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $nome = $_POST["CupomDesconto"] ?? '';
 
-        if ($sucesso) {
-            redirecWith("../paginas_lojista/cupons.html", ["cadastro" => "ok"]);
-        } else {
-            $errorInfo = $stmt->errorInfo();
-            redirecWith("../paginas_lojista/cupons.html", ["erro" => "Erro ao cadastrar: " . $errorInfo[2]]);
+        if (trim($nome) === '') {
+            echo json_encode(["ok" => false, "error" => "Preencha todos os campos obrigatórios"]);
+            exit;
         }
 
-    } catch (PDOException $e) {
-        redirecWith("../paginas_lojista/cupons.html", ["erro" => "Erro: " . $e->getMessage()]);
+        $sql = "INSERT INTO CupomDesconto (Nome_desconto) VALUES (:nome)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([":nome" => $nome]);
+
+        echo json_encode(["ok" => true, "message" => "Cupom cadastrado com sucesso!"]);
+        exit;
     }
-} else {
-    // Acesso direto via GET
-    redirecWith("../paginas_lojista/cupons.html");
+
+    echo json_encode(["ok" => false, "error" => "Método inválido"]);
+    exit;
+
+} catch (Throwable $e) {
+    http_response_code(500);
+    echo json_encode(["ok" => false, "error" => "Erro no banco de dados", "detail" => $e->getMessage()]);
+    exit;
 }
 ?>

@@ -1,0 +1,184 @@
+/* === Estilos gerais === */
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  background-color: #ceb09c5b;
+  color: #2b2b2b;
+}
+
+/* === Topo === */
+.top-bar {
+  background-color: #3c2b1a;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  position: relative;
+  z-index: 10;
+}
+
+.logo-area {
+  text-align: center;
+}
+
+.logo-inicial {
+  font-family: "Playfair Display", serif;
+  font-size: 48px;
+  color: #c59a5a; /* Dourado elegante */
+  margin: 0;
+  line-height: 0.8;
+}
+
+.logo-nome {
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.search-bar input {
+  width: 250px;
+  padding: 6px 15px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+}
+
+.icons img {
+  width: 24px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+/* === Banner === */
+.banner img {
+ position: relative;
+  width: 100%;
+  max-width: 1200px; /* centralizado e com limite */
+  margin: 30px auto; /* espaçamento do topo */
+  overflow: hidden;
+  border-radius: 8px;         /* centraliza e adiciona 20px de espaço nas laterais */
+}
+
+.banner-container {
+  display: flex;
+  align-items: center;       /* verticalmente alinhado */
+  justify-content: center;   /* centralizado horizontalmente */
+  gap: 15px;                 /* espaço entre botões e banner */
+  max-width: 1200px;         /* limite de largura */
+  margin: 30px 50px;         /* centraliza e adiciona 20px de espaço nas laterais */
+}
+
+/* === Produtos === */
+.produto {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  transition: all 0.3s ease;
+}
+
+.produto img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.produto h5 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 15px;
+  margin: 10px 0 5px;
+  color: #222;
+}
+
+.preco {
+  color: #b57b2e;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.produto:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* === Rodapé === */
+.rodape {
+  background-color: #B3957A;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 14px;
+}
+
+.redes {
+  margin-top: 10px;
+}
+
+.redes img {
+  width: 22px;
+  margin: 0 8px;
+  transition: opacity 0.3s;
+}
+
+.redes img:hover {
+  opacity: 0.7;
+}
+
+/* ======= ÁREA DO BANNER / CARROSSEL ======= */
+.banner {
+  position: relative;
+  width: 100%;
+  max-width: 1200px; /* centralizado e com limite */
+  margin: 30px auto; /* espaçamento do topo */
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* Cada slide do banner */
+.slide-banner {
+  display: none;
+}
+
+.slide-banner.active {
+  display: block;
+}
+
+.slide-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* ======= Botões laterais ======= */
+
+.btn-banner {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #B3957A(146, 104, 56, 0.541); /* leve transparência */
+  border: none;
+  font-size: 1.8rem;
+  color: #6d4305;
+  padding:  6px 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.3s, color 0.3s;
+  user-select: none;
+  z-index: 10;
+}
+
+.btn-banner:hover {
+  background: #B3957A(185, 138, 83, 0.945);
+  color: #6d4305; /* tom dourado ao passar o mouse */
+}
+
+.btn-banner.prev {
+  left: 10px; /* à esquerda do banner */
+}
+
+.btn-banner.next {
+  right: 10px; /* à direita do banner */
+}
+

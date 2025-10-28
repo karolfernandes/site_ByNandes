@@ -37,4 +37,5 @@ try {
     echo json_encode(["ok" => false, "error" => "Erro no banco de dados", "detail" => $e->getMessage()]);
     exit;
 }
+
 ?>

@@ -1,0 +1,59 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ceb09c38;
+}
+
+.header {
+  background-color: #3c2b1a;
+  border-bottom: 1px solid #ddd;
+}
+
+.produto-nome {
+  font-weight: bold;
+}
+
+.produto-preco {
+  font-weight: 600;
+}
+
+.produto-miniaturas img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.produto-miniaturas img:hover {
+  transform: scale(1.1);
+  border: 2px solid #28a745;
+}
+
+.cor-selecionavel {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  transition: transform 0.2s, border 0.2s;
+}
+
+.cor-selecionavel:hover {
+  transform: scale(1.2);
+  border: 2px solid #28a745;
+}
+
+.quantidade-valor {
+  display: inline-block;
+  width: 30px;
+  text-align: center;
+}
+
+.produto-descricao h4 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.produto-descricao ul {
+  padding-left: 20px;
+}

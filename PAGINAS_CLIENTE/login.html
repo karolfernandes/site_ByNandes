@@ -1,45 +1,48 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Login</title>
+
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <!-- Seu CSS -->
   <link rel="stylesheet" href="../CSS/style.css">
-
-
 </head>
 
 <body class="imagemFundo">
-  <!--criando as áreas de tela-->
+
   <div class="container-fluid">
     <div class="w-100 d-flex justify-content-center">
-      <form class="login-card shadow-sm p-4 rounded-3">
+      <form id="form-login" class="login-card shadow-sm p-4 rounded-3">
         
-          <!-- Moldura com a logo -->
-          <div class="logo-container">
-            <img src="../IMG/Logo da ByNandes.png" alt="Logo ByNandes" class="logo">
-          </div>
-          <div class="campos-login">
-          <h2 class="label-input text-uppercase">
-            CPF
-          </h2>
-          <input type="text" class="form-control mb-3" placeholder="Digite seu CPF" required />
-          <h2 class="label-input text-uppercase">
-            Senha:
-          </h2>
-          <input type="password" class="form-control mb-3" placeholder="Digite sua Senha" required />
-          <button type="submit" class="btn-entrar btn  w-100 mb-3">Entrar</button>
-          <a href="../index.html" class="d-block text-center">Cadastre-se</a>
+        <!-- Logo -->
+        <div class="logo-container text-center mb-3">
+          <img src="../IMG/Logo da ByNandes.png" alt="Logo ByNandes" class="logo img-fluid" style="max-width: 150px;">
+        </div>
+
+        <div class="campos-login">
+          <h2 class="label-input text-uppercase fs-6">CPF</h2>
+          <input id="cpf" name="cpf" type="text" class="form-control mb-3" placeholder="Digite seu CPF" required>
+
+          <h2 class="label-input text-uppercase fs-6">Senha</h2>
+          <input id="senha" name="senha" type="password" class="form-control mb-3" placeholder="Digite sua senha" required>
+
+          <button type="submit" class="btn btn-primary w-100 mb-3">Entrar</button>
+
+          <a href="../PAGINAS_CLIENTE/cadastro.html" class="d-block text-center">Cadastre-se</a>
           <a href="#" class="d-block text-center">Esqueceu a Senha?</a>
-          </div>
-        </form>
+        </div>
+      </form>
     </div>
+  </div>
 
-
-
+  <!-- ⚠️ CORREÇÃO AQUI: atributo deve ser "src" e não "scr" -->
+  <script src="../JS/login.js"></script>
 </body>
 
 </html>

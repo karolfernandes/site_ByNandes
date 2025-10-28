@@ -16,7 +16,19 @@ main .card {
   height: 48px;
   background: #e9ecef;
   border: 1px solid #dee2e6;
+  
+  
 }
+
+.logo {
+  align-items: center;
+    /* alinhar no centro*/
+    display: flex;
+    
+    /*redimensionar*/
+    justify-content:space-between;
+}
+
 
 /* Miniaturas (produtos) */
 .product-thumb {
@@ -41,7 +53,7 @@ main .card {
 .table td, .table th { vertical-align: middle; }
 
 .header {
-    background-color: #4b2e2e;
+    background-color: #3c2b1a;
     /* cor de fundo*/
     padding: 10px 20px;
     /*tamanho da área*/

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes do Produto</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../CSS/produtos.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header py-3 px-4 d-flex justify-content-between align-items-center">
+    <div class="logo">
+      <img src="../IMG/Logo da ByNandes.png" alt="Logo" height="70">
+    </div>
+    
+    <div class="icons d-flex gap-3">
+        <img src="../IMG/coracao.png" alt="Miniatura 3" height="30">
+      <img src="../IMG/carrinho.png" alt="Carrinho" height="30">
+      <img src="../IMG/perfil.png" alt="Perfil" height="30">
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="container my-5">
+    <div class="row">
+      <!-- Galeria de Imagens -->
+      <div class="col-md-6">
+        <div class="produto-imagem-principal mb-3">
+          <img src="../IMG/Bolsas.jpg" alt="Produto" class="img-fluid rounded">
+        </div>
+        <div class="produto-miniaturas d-flex gap-2">
+         
+          <img src="../IMG/Bolsas.jpg" alt="Miniatura 1" class="img-thumbnail miniatura">
+          <img src="../IMG/Bolsas.jpg" alt="Miniatura 2" class="img-thumbnail miniatura">
+          <img src="../IMG/Bolsas.jpg" alt="Miniatura 3" class="img-thumbnail miniatura">
+        </div>
+      </div>
+
+      <!-- Informações do Produto -->
+      <div class="col-md-6">
+        <h1 class="produto-nome">Cama Pet Pequeno</h1>
+        <p class="produto-preco fs-3 text-success">R$ 89,54</p>
+        <p class="produto-estoque text-muted">Em estoque</p>
+
+        <!-- Seleção de cores -->
+        <div class="mb-3">
+          <label class="form-label">Cor:</label>
+          <div class="d-flex gap-2">
+            <span class="cor-selecionavel" style="background-color: #000;"></span>
+            <span class="cor-selecionavel" style="background-color: #fff; border: 1px solid #ccc;"></span>
+            <span class="cor-selecionavel" style="background-color: #ff0000;"></span>
+          </div>
+        </div>
+
+        <!-- Quantidade -->
+        <div class="mb-3 d-flex align-items-center gap-2">
+          <label class="form-label mb-0">Quantidade:</label>
+          <button class="btn btn-outline-secondary diminuir">-</button>
+          <span class="quantidade-valor">1</span>
+          <button class="btn btn-outline-secondary aumentar">+</button>
+        </div>
+
+        <!-- Botões de ação -->
+        <div class="d-flex gap-3 mb-4">
+          <button class="btn btn-success btn-lg">Adicionar ao Carrinho</button>
+          <button class="btn btn-outline-danger btn-lg">&#10084; Favoritar</button>
+        </div>
+
+        <!-- Descrição do Produto -->
+        <div class="produto-descricao">
+          <h4>Descrição</h4>
+          <p>
+            Cama pet confortável, ideal para cães e gatos pequenos. Feita com material de alta qualidade,
+            lavável e resistente. Disponível em várias cores.
+          </p>
+          <ul>
+            <li>Material: Poliéster e espuma</li>
+            <li>Dimensões: 50x40x15 cm</li>
+            <li>Fácil de limpar</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -35,7 +35,7 @@
   <main class="container my-4">
 
     <!-- ===================== BANNERS ===================== -->
-    <section class="mb-5" aria-labelledby="titulo-banners">
+    <section id="Cbanners" class="mb-5" aria-labelledby="titulo-banners">
       <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
         <h4 id="titulo-banners" class="section-title m-0">Banners</h4>
         
@@ -66,11 +66,12 @@
               <div class="row g-3">
                 <div class="col-md-6">
                   <label class="form-label">Data de validade</label>
-                  <input type="date" class="form-control" name="validade" placeholder="AAAA-MM-DD">
+               <input type="date" id="data" name="data" required>
                 </div>
                 <div class="col-md-6">
                   <label class="form-label">Categoria (opcional)</label>
-                  <select class="form-select">
+                  <select class="form-select" name="categoria">
+>
                     <option value="">— Sem vínculo —</option>
                     <option value="1">Roupas</option>
                     <option value="2">Calçados</option>
@@ -110,7 +111,7 @@
                   <th class="text-end" style="width:170px;">Ações</th>
                 </tr>
               </thead>
-              <tbody id="tabelaBanners">
+              <tbody id="tbBanners">
                 
               </tbody>
               <tfoot>
@@ -124,67 +125,69 @@
 
     <!-- ===================== CUPONS ===================== -->
     <section class="mb-5" aria-labelledby="titulo-cupom">
-      <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
-        <h4 id="titulo-cupom" class="section-title m-0">Cupons</h4>
-      
-      </div>
-
-      <div class="card shadow-sm">
-        <div class="card-header bg-white">
-          <strong>Cadastrar/Atualizar cupom</strong>
-        </div>
-        <div class="card-body">
-          <form action="../PHP/cadastro_cupons.php" class="row g-3" method="POST">
-            <div class="col-md-4">
-              <label class="form-label">Nome do cupom</label>
-              <input type="text" class="form-control" maxlength="45" placeholder="PET10">
-            </div>
-            <div class="col-md-4">
-              <label class="form-label">Valor (R$ ou %)</label>
-              <input type="number" class="form-control" step="0.01" placeholder="Ex.: 10,00">
-              
-            </div>
-            <div class="col-md-4">
-              <label class="form-label">Validade</label>
-              <input type="date" class="form-control">
-            </div>
-            <div class="col-md-4">
-              <label class="form-label">Quantidade</label>
-              <input type="number" class="form-control" min="1" placeholder="50">
-            </div>
-            <div class="col-12 d-flex gap-2">
-              <button type="submit" class="btn btn-primary" >Cadastrar</button>
-              <button type="submit" class="btn btn-outline-secondary" >Editar</button>
-              <button type="submit" class="btn btn-outline-danger" >Excluir</button>
-            </div>
-          </form>
+        <div
+          class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+          <h4 id="titulo-cupom" class="section-title m-0">Cupons</h4>
+          <span class="text-muted small">Tabela: <code>Cupom</code></span>
         </div>
 
-        <!-- Lista de Cupons -->
-        <div class="card-body border-top">
-          <div class="table-responsive">
-            <table class="table align-middle table-hover table-list">
-              <thead class="table-light">
-                <tr>
-                  <th>Nome</th>
-                  <th>Valor</th>
-                  <th>Validade</th>
-                  <th>Quantidade</th>
-                  <th class="text-end" style="width:170px;">Ações</th>
-                </tr>
-              </thead>
-              <tbody>
-                
-              </tbody>
-              <tfoot>
-                <tr></tr>
-              </tfoot>
-            </table>
+        <div class="card shadow-sm">
+          <div class="card-header bg-white">
+            <strong>Cadastrar/Atualizar cupom</strong>
+          </div>
+          <div class="card-body">
+            <form class="row g-3" action="../php/cupom.php" method="post">
+              <div class="col-md-4">
+                <label class="form-label">Nome do cupom</label>
+                <input name="nome" type="text" class="form-control"
+                  maxlength="45" placeholder="PET10">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Valor (R$ ou %)</label>
+                <input name="valor" type="number" class="form-control"
+                  step="0.01" placeholder="Ex.: 10,00">
+
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Validade</label>
+                <input name="validade" type="date" class="form-control">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Quantidade</label>
+                <input name="quantidade" type="number" class="form-control"
+                  min="1" placeholder="50">
+              </div>
+              <div class="col-12 d-flex gap-2">
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                <button type="button"
+                  class="btn btn-outline-secondary">Editar</button>
+                <button type="button"
+                  class="btn btn-outline-danger">Excluir</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Lista de Cupons -->
+          <div class="card-body border-top">
+            <div class="table-responsive">
+              <table class="table align-middle table-hover table-list">
+                <thead class="table-light">
+                  <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Valor</th>
+                    <th>Validade</th>
+                    <th>Quantidade</th>
+                    <th style="text-align:right">Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="tbCupom"></tbody>
+
+              </table>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-
+      </section>
     <!-- ===================== PROMOÇÕES EM CATEGORIAS ===================== -->
     <section class="mb-5" aria-labelledby="titulo-promocao-categoria">
       <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
@@ -235,7 +238,7 @@
                   <th class="text-end" style="width:170px;">Ações</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="tbPCategorias">
                
               </tbody>
               <tfoot>
@@ -297,7 +300,7 @@
                   <th class="text-end" style="width:170px;">Ações</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="tbPProdutos">
                 
               </tbody>
               <tfoot>
@@ -320,5 +323,12 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script>
+const params = new URLSearchParams(window.location.search);
+if (params.get("msg") === "cadastro_ok") {
+  alert("✅ Cadastro OK!");
+}
+</script>
+
 </body>
 </html>

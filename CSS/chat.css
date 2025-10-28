@@ -1,7 +1,7 @@
 /*configurando a tela de chat*/
 /* Barra superior */
 .menu-chat {
-    background-color: #5C3C2B; /* cor de fundo */
+    background-color: #3c2b1a; /* cor de fundo */
     padding: 10px 20px;        /* tamanho da área */
     display: flex;             /* ativa flexbox */
     justify-content: center;   /* centraliza a logo no meio */
