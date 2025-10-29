@@ -1,80 +1,69 @@
-// frete_lojista.js
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.querySelector('input[name="img"]'); // ← nome certo do input
+  const previewBox = document.querySelector(".banner-thumb");
+  if (!input || !previewBox) return;
 
-// Função para escapar caracteres especiais (evita injeção de HTML)
-const esc = s => (s || '').replace(/[&<>"']/g, c => ({
-  '&': '&amp;',
-  '<': '&lt;',
-  '>': '&gt;',
-  '"': '&quot;',
-  "'": '&#39;'
-}[c]));
+  input.addEventListener("change", () => {
+    const file = input.files && input.files[0];
 
-// Função para listar banners cadastrados
-function listarBanners(tbBanners) {
-  const tbody = document.getElementById(tbBanners);
-  const url = '../php/cadastro_banners.php?listar=1&format=json';
+    if (!file) {
+      previewBox.innerHTML = '<span class="text-muted">Prévia</span>';
+      return;
+    }
+    if (!file.type.startsWith("image/")) {
+      previewBox.innerHTML = '<span class="text-danger small">Arquivo inválido</span>';
+      input.value = "";
+      return;
+    }
 
-  const row = f => `
-    <tr>
-      <td>${Number(f.id) || ''}</td>
-      <td>${esc(f.descricao || '-')}</td>
-      <td class="text-end">
-        <button class="btn btn-sm btn-warning" data-id="${f.id}">Editar</button>
-        <button class="btn btn-sm btn-danger" data-id="${f.id}">Excluir</button>
-      </td>
-    </tr>`;
-
-  fetch(url, { cache: 'no-store' })
-    .then(r => r.json())
-    .then(d => {
-      if (!d.ok) throw new Error('Erro ao listar banners');
-      const arr = d.banners || []; // agora correto
-      tbody.innerHTML = arr.length
-        ? arr.map(row).join('')
-        : `<tr><td colspan="3" class="text-center text-muted">Nenhum banner cadastrado.</td></tr>`;
-    })
-    .catch(err => {
-      tbody.innerHTML = `<tr><td colspan="3" class="text-center text-danger">Falha ao carregar: ${esc(err.message)}</td></tr>`;
-    });
-}
-
-
-// Função para listar cupom
-function listarCupom(tbCupom) {
-  const tbody = document.getElementById(tbCupom);
-  const url = '../PHP/cadastro_banners.php?listar=1&format=json';
-
-  const moeda = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
-
-  const row = f => `
-    <tr>
-      <td>${Number(f.id) || ''}</td>
-      <td>${esc(f.nome || '-')}</td>
-      <td>${esc(f.valor || '-')}</td>
-      <td>${esc(f.quantidade || '-')}</td>
-      <td class="text-end">${moeda.format(parseFloat(f.valor ?? 0))}</td>
-      <td class="text-end">
-        <button class="btn btn-sm btn-warning" data-id="${f.id}"><i class="bi bi-pencil"></i> Editar</button>
-        <button class="btn btn-sm btn-danger" data-id="${f.id}"><i class="bi bi-trash"></i> Excluir</button>
-      </td>
-    </tr>`;
-
-  fetch(url, { cache: 'no-store' })
-    .then(r => r.json())
-    .then(d => {
-      if (!d.ok) throw new Error(d.error || 'Erro ao listar cupons');
-      const fretes = d.cupons || [];
-      tbody.innerHTML = cupons.length
-        ? cupons.map(row).join('')
-        : `<tr><td colspan="5" class="text-center text-muted">Nenhum frete cadastrado.</td></tr>`;
-    })
-    .catch(err => {
-      tbody.innerHTML = `<tr><td colspan="5" class="text-center text-danger">Falha ao carregar: ${esc(err.message)}</td></tr>`;
-    });
-}
-
-// Executa ao carregar o DOM
-document.addEventListener('DOMContentLoaded', () => {
-  listarBanners("tbBanners");  // chama a função ajustada
-  listarCupom("tbCupons"); 
+    const reader = new FileReader();
+    reader.onload = e => {
+      previewBox.innerHTML = `<img src="${e.target.result}" alt="Prévia do banner" 
+      style="max-width:100%; max-height:160px; object-fit:contain;">`;
+    };
+    reader.readAsDataURL(file);
+  });
 });
+
+/* ==================== LISTAR BANNERS ==================== */
+async function listarBanners() {
+  const tbody = document.getElementById("tbBanners");
+  if (!tbody) return;
+  tbody.innerHTML = `<tr><td colspan="6" class="text-center text-muted">Carregando...</td></tr>`;
+
+  try {
+    // caminho certo pro seu PHP
+    const res = await fetch("../PHP/cadastro_banners.php?listar=1", { cache: "no-store" });
+    const data = await res.json();
+
+    if (!data.ok) throw new Error(data.error || "Erro ao listar banners");
+    const banners = data.banners || [];
+
+    if (banners.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="6" class="text-center text-muted">Nenhum banner cadastrado.</td></tr>`;
+      return;
+    }
+
+    const rows = banners.map(b => `
+      <tr>
+        <td class="text-center">
+          ${b.Imagem_banner
+            ? `<img src="data:image/jpeg;base64,${b.Imagem_banner}" alt="${b.Descricao}" style="width:96px;height:64px;object-fit:cover;border-radius:6px;">`
+            : '<span class="text-muted">Sem imagem</span>'}
+        </td>
+        <td>${b.Descricao || '-'}</td>
+        <td>${b.link ? `<a href="${b.link}" target="_blank">${b.link}</a>` : '-'}</td>
+        <td>${b.Nome_categoria || '— Sem vínculo —'}</td>
+        <td>${b.Data_validade || '-'}</td>
+        <td class="text-end text-muted">—</td>
+      </tr>
+    `).join("");
+
+    tbody.innerHTML = rows;
+  } catch (err) {
+    tbody.innerHTML = `<tr><td colspan="6" class="text-center text-danger">Falha ao carregar: ${err.message}</td></tr>`;
+  }
+}
+
+/* ==================== EXECUTAR AO ABRIR ==================== */
+document.addEventListener("DOMContentLoaded", listarBanners);

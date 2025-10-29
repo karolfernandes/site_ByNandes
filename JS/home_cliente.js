@@ -3,6 +3,8 @@
   const esc = s => (s ?? "").toString().replace(/[&<>"']/g, c => (
     {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]
   ));
+  fetch("../PHP/banners.php") // método GET
+
 
   const placeholder = (w = 1200, h = 400, txt = "SEM IMAGEM") =>
     "data:image/svg+xml;base64," + btoa(
@@ -136,9 +138,9 @@
     indicatorsSelector = "#banners-indicators",
     // Ajuste conforme a pasta do seu HTML em relação ao PHP:
     urlCandidates = [
-      "../PHP/banners.php?listar=1",   // se o HTML estiver em PAGINAS_CLIENTE/
-      "PHP/banners.php?listar=1",      // se o HTML estiver na raiz do projeto
-      "../../PHP/banners.php?listar=1" // se o HTML estiver uma pasta mais fundo
+      "../PHP/cadastro_banners.php?listar=1",   // se o HTML estiver em PAGINAS_CLIENTE/
+      "PHP/cadastro_banners.php?listar=1",      // se o HTML estiver na raiz do projeto
+      "../../PHP/cadastro_banners.php?listar=1" // se o HTML estiver uma pasta mais fundo
     ],
     apenasValidos = true
   } = {}) {
@@ -166,7 +168,7 @@
   document.addEventListener("DOMContentLoaded", () => {
     listarBannersCarrossel({
       // se o seu HTML estiver na raiz, troque a ordem para ["PHP/banners.php?listar=1", "../PHP/banners.php?listar=1", ...]
-      urlCandidates: ["../PHP/banners.php?listar=1", "PHP/banners.php?listar=1", "../../PHP/banners.php?listar=1"],
+      urlCandidates: ["../PHP/cadastro_banners.php?listar=1", "PHP/cadastro_banners.php?listar=1", "../../PHP/cadastro_banners.php?listar=1"],
       apenasValidos: true
     });
   });

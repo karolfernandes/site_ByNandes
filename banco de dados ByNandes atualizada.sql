@@ -26,16 +26,33 @@ CREATE TABLE Empresa (
     Senha VARCHAR(100) not null,
     Linkedin VARCHAR(100)
 ) ;
+insert into Empresa (Nome_Fantasia,Cnpj_Cpf,Telefone,Instagram,Whatsapp,Facebook,
+Usuario,Senha) values ('ByNandes','40028922','(63)40028922','@ByNandes',
+'(63)40028922','facebook.com/bynandes','Anna Karolina','40028922');
+select * from Empresa;
+select * from Cliente;
+
+INSERT INTO Cliente (nome, cpf, telefone, email, senha, foto_perfil)
+VALUES (
+  'João da Silva',
+  '12345678901',
+  '(11) 98765-4321',
+  'joao.silva@example.com',
+  'senha123',
+  NULL
+);
+
+
 
 -- Tabela: Cliente
 CREATE TABLE Cliente(
 idCliente int primary key auto_increment,
 nome varchar(150) not null,
-cpf int not null unique,
+cpf varchar(20) not null unique,
 telefone varchar(20),
 email varchar(100) not null,
 senha varchar(12) not null,
-foto_perfil longblob not null );
+foto_perfil longblob  );
 
 -- Tabela: Endereco
 CREATE TABLE Endereco (
@@ -75,6 +92,7 @@ CREATE TABLE CupomDesconto (
     Nome_desconto VARCHAR(45)
 ) ;
 
+
 -- Tabela: Frete
 CREATE TABLE Frete (
     idFrete INT AUTO_INCREMENT PRIMARY KEY,
@@ -82,7 +100,7 @@ CREATE TABLE Frete (
     Bairro VARCHAR(45),
     Transportadora VARCHAR(45)
 ) ;
-
+-- drop table Frete;
 
 -- Tabela: Vendas
 CREATE TABLE Vendas (
@@ -152,6 +170,8 @@ CREATE TABLE Vendas_has_Produto_Cliente (
 select * from Categorias;
 DELETE FROM categorias
 WHERE idCategorias =8;
+
+
 -- Tabela: Categorias
 CREATE TABLE Categorias (
     idCategorias INT AUTO_INCREMENT PRIMARY KEY,
@@ -199,21 +219,28 @@ CREATE TABLE Banner (
     Categorias_idCategorias INT,
     FOREIGN KEY (Categorias_idCategorias) REFERENCES Categorias(idCategorias) ON DELETE CASCADE
 ) ;
-
+-- drop table Banner;
 select * from Cliente;
-insert into Cliente(nome,cpf,telefone,email,senha,foto_perfil)values("Anna",40028922,"apropria@gmail.com,chinatemc,linkdaimagem");
+INSERT INTO Cliente(nome, cpf, telefone, email, senha, foto_perfil)
+VALUES
+('Anna', '40028922', '(63) 99999-9999', 'apropria@gmail.com', 'senhaSegura', NULL);
 
 select * from CupomDesconto;
-insert into CumpomDesconto(Cod_desconto,Data_validade,Quantidade,Nome_desconto) values(123,"31-02-2025",1,"Dia das mães");
+INSERT INTO CupomDesconto(Cod_desconto, Dias_validade, Quantidade, Nome_desconto)
+VALUES
+('123', '2025-02-28', '1', 'Dia das mães');
+
 
 select * from Endereco;
-insert into Endereco(Cep,Cidade,Estado,Numero,Complemento,TipoLogradouro,Bairro,Tipo) values(1234,"Araguaína","Tocantins",12,"na frente de uma placa verde","casa","Costa Esmeralda",1);
+INSERT INTO Endereco(Cep,Cidade,Estado,Numero,Complemento,TipoLogradouro,Bairro,Tipo)
+VALUES
+('1234','Araguaína','Tocantins','12','na frente de uma placa verde','casa','Costa Esmeralda','Residencial');
 
 select * from Categorias;
 insert into Categorias(Nome_categoria,desconto,imagem,Validade_desconto)values("Godofredo","25%","link imagem","11-11-1111");
 
 select * from Frete;
-insert into Frete(Valor_frete,Bairro,Transportadora)values("praça",15,"Costa Esmeralda","correios");
+insert into Frete(Valor_frete,Bairro,Transportadora)values(15,"Costa Esmeralda","correios");
 
 
 -- SELECT
