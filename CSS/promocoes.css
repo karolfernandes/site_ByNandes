@@ -85,3 +85,19 @@ body {
   .brand-thumb { width: 100%; height: 160px; }
   .product-thumb { height: 160px; }
 }
+/* Área da prévia do banner */
+.banner-thumb {
+  width: 100%; /* ocupa toda a largura da coluna */
+  max-width: 100%;
+  height: 180px; /* altura fixa para a prévia */
+  overflow: hidden;
+  background-color: #f8f9fa; /* cor clara para área da prévia */
+  position: relative;
+}
+
+.banner-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* mantém proporção, centralizado */
+  display: block;
+}
