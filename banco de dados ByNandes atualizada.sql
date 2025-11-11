@@ -200,6 +200,19 @@ CREATE TABLE ImagemProduto (
     Descricao VARCHAR(45)
 ) ;
 
+SELECT b.idBanner, b.Descricao, b.link, b.Data_validade,
+                       b.Imagem_banner, c.Nome_categoria
+                FROM Banner b
+                LEFT JOIN Categorias c ON b.Categorias_idCategorias = c.idCategorias
+                ORDER BY b.idBanner DESC;
+                
+                
+                SELECT b.idBanner, b.Descricao, b.link, b.Data_validade,
+                       b.Imagem_banner, c.Nome_categoria
+                FROM Banner b
+                LEFT JOIN Categorias c ON b.Categorias_idCategorias = c.idCategorias
+                ORDER BY b.idBanner DESC;
+
 -- Tabela: Produtos_has_ImagemProduto
 CREATE TABLE Produtos_has_ImagemProduto (
     Produtos_idProdutos INT,
@@ -219,6 +232,9 @@ CREATE TABLE Banner (
     Categorias_idCategorias INT,
     FOREIGN KEY (Categorias_idCategorias) REFERENCES Categorias(idCategorias) ON DELETE CASCADE
 ) ;
+
+select * from banner; 
+
 -- drop table Banner;
 select * from Cliente;
 INSERT INTO Cliente(nome, cpf, telefone, email, senha, foto_perfil)
